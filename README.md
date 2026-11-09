@@ -1,6 +1,7 @@
 # Quantitative-Data-Analysis-2
 QDA2 - UvA
-# Link "https://teejayye.github.io/Quantitative-Data-Analysis-2/"
+# Link
+"https://teejayye.github.io/Quantitative-Data-Analysis-2/"
 
 Studying portal for QDA2 - UvA - Business Administration 2026
 
