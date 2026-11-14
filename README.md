@@ -7,6 +7,9 @@ Studying portal for QDA2 - UvA - Business Administration 2026
 
 ***Quantitative Data Analysis - 6012B0423Y***
 
+<img width="1184" height="1021" alt="QDA2_Exam_Prediction" src="https://github.com/user-attachments/assets/611070f6-5464-4d29-9eb2-4f49684f8911" />
+
+
 This has: 
 - an overview;
 - a searchable summary with a glossary;
