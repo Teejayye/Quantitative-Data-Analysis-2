@@ -1,4 +1,5 @@
 # Quantitative-Data-Analysis-2
+ # **Also practice canvas questions!!**
 QDA2 - UvA
 # Link
 "https://teejayye.github.io/Quantitative-Data-Analysis-2/"
