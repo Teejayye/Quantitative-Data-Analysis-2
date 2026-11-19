@@ -73,6 +73,9 @@ figure.spss td.blank{background:#fff3c4;font-weight:700;text-align:center}figure
 details.theory{margin-top:12px;border:1px solid var(--keyb);border-radius:10px;background:var(--key)}details.theory>summary{cursor:pointer;padding:7px 12px;font-weight:700;color:var(--keyb)}.thb{padding:4px 12px 10px;font-size:14px}.thb .tht{font-weight:700;margin-bottom:2px}
 
 .fs{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}.fsw{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}.fsw h3{margin:0 0 6px}.tn{font-size:13px;background:var(--trap);border-left:3px solid var(--trapb);padding:6px 9px;border-radius:5px;margin:8px 0 0}
+
+.tg{display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.02em;padding:1px 5px;border-radius:4px;white-space:nowrap;vertical-align:middle}.tg.on{background:#dcfce7;color:#166534;border:1px solid #86efac}.tg.lrn{background:#ffedd5;color:#9a3412;border:1px solid #fdba74}.tg.prt{background:#e0e7ff;color:#3730a3;border:1px solid #a5b4fc}
+.fleg{font-size:13px;margin:0 0 10px;line-height:1.9}
 </style></head><body>
 <header><div class="hwrap"><div class="brand">QDA2 <small>Midterm portal · UvA 2026-27</small></div>
 <nav><button data-v="hub">Hub</button><button data-v="summary">Summary</button><button data-v="formulas">Formulas</button><button data-v="glossary">Glossary</button><button data-v="focus">Focus topics</button><button data-v="practice">Practice</button><button data-v="exams">Exams</button></nav>
@@ -3411,45 +3414,50 @@ const FOCUS = [
 {t:'Regression, mediation analysis, logistic regression', topic:'tx', lvl:1, why:'Topics 4–6: end-of-term exam'}
 ];
 
-const FORMULA_HTML = `<div class="fs">
-<div class="fsw"><h3>Week 1 · PCA</h3><table class="t sm">
-<tr><td>Minimum sample</td><td><b>n ≥ 10 × #items</b> (10–15×; Field &gt; 300)</td></tr>
-<tr><td>Correlations</td><td>"many" |r| &gt; .30</td></tr>
-<tr><td>KMO</td><td><b>.5 &lt; KMO &lt; 1</b> (higher = better)</td></tr>
-<tr><td>Bartlett</td><td>H₀: correlation matrix = identity → want <b>p &lt; .05</b></td></tr>
-<tr><td>Total variance</td><td>Σ eigenvalues = <b>#items</b></td></tr>
-<tr><td>% variance comp. j</td><td><b>EV<sub>j</sub> / #items × 100</b></td></tr>
-<tr><td>Kaiser</td><td>keep <b>EV &gt; 1</b></td></tr>
-<tr><td>Cumulative %</td><td>keep until <b>≥ 60%</b> (avg communality ≥ .5)</td></tr>
-<tr><td>Scree (Cattell)</td><td>keep components <b>before</b> the elbow</td></tr>
-<tr><td>Communality item i</td><td><b>h²<sub>i</sub> = Σ loading²</b> over extracted components</td></tr>
-<tr><td>Recode reversed item</td><td><b>new = (max + 1) − old</b> (7-pt: 8 − x)</td></tr>
-<tr><td>Summated scale</td><td>mean of the clean items (original range)</td></tr></table>
+const G = '<span class="tg on">ON SHEET</span>', LRN = '<span class="tg lrn">LEARN</span>', PRT = '<span class="tg prt">PARTLY</span>';
+const FORMULA_HTML = `<div class="fleg">${G} printed on the official exam formula sheet · ${PRT} the formula is on the sheet but you must know how to apply it here · ${LRN} <b>not on the sheet: memorise</b></div>
+<div class="fs">
+<div class="fsw"><h3>Week 1 · PCA <span class="tg lrn">all LEARN</span></h3><table class="t sm">
+<tr><td>Minimum sample<br>${LRN}</td><td><b>n ≥ 10 × #items</b> (10–15×; Field &gt; 300)</td></tr>
+<tr><td>Correlations<br>${LRN}</td><td>"many" |r| &gt; .30</td></tr>
+<tr><td>KMO<br>${LRN}</td><td><b>.5 &lt; KMO &lt; 1</b> (higher = better)</td></tr>
+<tr><td>Bartlett<br>${LRN}</td><td>H₀: correlation matrix = identity → want <b>p &lt; .05</b></td></tr>
+<tr><td>Total variance<br>${LRN}</td><td>Σ eigenvalues = <b>#items</b></td></tr>
+<tr><td>% variance comp. j<br>${LRN}</td><td><b>EV<sub>j</sub> / #items × 100</b></td></tr>
+<tr><td>Kaiser<br>${LRN}</td><td>keep <b>EV &gt; 1</b></td></tr>
+<tr><td>Cumulative %<br>${LRN}</td><td>keep until <b>≥ 60%</b> (avg communality ≥ .5)</td></tr>
+<tr><td>Scree (Cattell)<br>${LRN}</td><td>keep components <b>before</b> the elbow</td></tr>
+<tr><td>Communality item i<br>${LRN}</td><td><b>h²<sub>i</sub> = Σ loading²</b> over extracted components</td></tr>
+<tr><td>Recode reversed item<br>${LRN}</td><td><b>new = (max + 1) − old</b> (7-pt: 8 − x)</td></tr>
+<tr><td>Summated scale<br>${LRN}</td><td>mean of the clean items (original range)</td></tr></table>
 <p class="tn">⚠ Bartlett: low p is good. ⚠ KMO is not a p-value. ⚠ EV &gt; 1 ≠ significant. ⚠ Drop cross-loaders and one-item components. ⚠ Negative loading = reverse-worded → recode.</p></div>
 <div class="fsw"><h3>Week 2 · One-way ANOVA</h3><table class="t sm">
-<tr><td>SS<sub>T</sub></td><td>Σ(y − ȳ<sub>grand</sub>)² · df<sub>T</sub> = <b>n − 1</b></td></tr>
-<tr><td>SS<sub>M</sub> (between)</td><td>Σ n<sub>j</sub>(ȳ<sub>j</sub> − ȳ<sub>grand</sub>)² · df<sub>M</sub> = <b>k − 1</b></td></tr>
-<tr><td>SS<sub>R</sub> (within)</td><td>Σ(y − ȳ<sub>j</sub>)² · df<sub>R</sub> = <b>n − k</b></td></tr>
-<tr><td>Decomposition</td><td><b>SS<sub>T</sub> = SS<sub>M</sub> + SS<sub>R</sub></b>; df<sub>T</sub> = df<sub>M</sub> + df<sub>R</sub></td></tr>
-<tr><td>Mean squares, F</td><td><b>MS = SS/df</b>; <b>F = MS<sub>M</sub>/MS<sub>R</sub></b></td></tr>
-<tr><td>R²</td><td><b>SS<sub>M</sub>/SS<sub>T</sub></b></td></tr>
-<tr><td>H₀ / H₁</td><td>μ₁ = μ₂ = … = μ<sub>k</sub> / at least one μ differs</td></tr>
-<tr><td>Levene</td><td>H₀: equal variances → want <b>p &gt; .05</b>; else "does not assume" row + Welch</td></tr>
-<tr><td>Contrast</td><td><b>Σc = 0</b>; lower-expected groups negative</td></tr>
-<tr><td>Orthogonal</td><td><b>Σ c<sub>1j</sub>·c<sub>2j</sub> = 0</b></td></tr>
-<tr><td>Contrast value</td><td><b>Σ c<sub>j</sub> · ȳ<sub>j</sub></b></td></tr>
-<tr><td>One-sided</td><td>direction OK? → <b>p/2</b>; wrong direction → not supported</td></tr>
-<tr><td>Bonferroni</td><td>α / #comparisons; #pairs = k(k−1)/2</td></tr></table>
-<p class="tn">⚠ Significant F ≠ which groups differ. ⚠ Interpret R² for the study (% of the OV explained by the PV). ⚠ Halve p only if the sign is right.</p></div>
+<tr><td>F-test<br>${G}</td><td><b>F = MS<sub>M</sub>/MS<sub>R</sub> = [SS<sub>M</sub>/(k − 1)] / [SS<sub>R</sub>/(n − k)]</b>; k = #categories, n = #observations</td></tr>
+<tr><td>MS, df<sub>M</sub>, df<sub>R</sub><br>${G}</td><td>MS = SS/df; df<sub>M</sub> = <b>k − 1</b>; df<sub>R</sub> = <b>n − k</b> (inside the F formula)</td></tr>
+<tr><td>R²<br>${G}</td><td><b>SS<sub>M</sub>/SS<sub>T</sub></b></td></tr>
+<tr><td>Decomposition<br>${LRN}</td><td><b>SS<sub>T</sub> = SS<sub>M</sub> + SS<sub>R</sub></b>; df<sub>T</sub> = <b>n − 1</b> = df<sub>M</sub> + df<sub>R</sub></td></tr>
+<tr><td>SS definitions<br>${LRN}</td><td>SS<sub>T</sub>: Σ(y − ȳ<sub>grand</sub>)² · SS<sub>M</sub>: Σ n<sub>j</sub>(ȳ<sub>j</sub> − ȳ<sub>grand</sub>)² · SS<sub>R</sub>: Σ(y − ȳ<sub>j</sub>)²</td></tr>
+<tr><td>H₀ / H₁<br>${LRN}</td><td>μ₁ = μ₂ = … = μ<sub>k</sub> / at least one μ differs</td></tr>
+<tr><td>Levene<br>${LRN}</td><td>H₀: equal variances → want <b>p &gt; .05</b>; else "does not assume" row + Welch</td></tr>
+<tr><td>Contrast<br>${LRN}</td><td><b>Σc = 0</b>; lower-expected groups negative</td></tr>
+<tr><td>Orthogonal<br>${LRN}</td><td><b>Σ c<sub>1j</sub>·c<sub>2j</sub> = 0</b></td></tr>
+<tr><td>Contrast value<br>${LRN}</td><td><b>Σ c<sub>j</sub> · ȳ<sub>j</sub></b></td></tr>
+<tr><td>One-sided<br>${LRN}</td><td>direction OK? → <b>p/2</b>; wrong direction → not supported</td></tr>
+<tr><td>Bonferroni<br>${LRN}</td><td>α / #comparisons; #pairs = k(k−1)/2</td></tr></table>
+<p class="tn">⚠ Significant F ≠ which groups differ. ⚠ Interpret R² for the study (% of the OV explained by the PV). ⚠ Halve p only if the sign is right. ⚠ The sheet's "F-test regression" (n − k − 1) is for regression, <b>not</b> ANOVA.</p></div>
 <div class="fsw"><h3>Week 3 · Factorial ANOVA</h3><table class="t sm">
-<tr><td>Design</td><td>(a×b) → <b>a·b cells</b></td></tr>
-<tr><td>SS<sub>M</sub></td><td><b>SS<sub>A</sub> + SS<sub>B</sub> + SS<sub>A×B</sub></b> (balanced)</td></tr>
-<tr><td>df</td><td>A: a−1 · B: b−1 · <b>A×B: (a−1)(b−1)</b>* · Model: cells−1 · <b>Error: N − cells</b> · Corrected total: N−1<br><span style="font-size:.9em;color:#666">Source: formula sheet + lecture 3a slide 21 (k = all cells). *Field rule, check in the output.</span></td></tr>
-<tr><td>F per effect</td><td><b>MS<sub>effect</sub> / MS<sub>error</sub></b></td></tr>
-<tr><td>Partial η²</td><td><b>SS<sub>effect</sub> / (SS<sub>effect</sub> + SS<sub>error</sub>)</b>; .01 small · .06 medium · .14 large</td></tr>
-<tr><td>R² (model)</td><td><b>SS<sub>Corrected Model</sub> / SS<sub>Corrected Total</sub></b></td></tr>
-<tr><td>Interaction H₀</td><td>effect of A is the same at every level of B</td></tr></table>
-<p class="tn">⚠ Strongest effect = largest partial η² (not the smallest p). ⚠ Partial η²'s don't add up to R². ⚠ With an interaction, main effects can mislead. ⚠ Simple effects: compare the core PV <i>within</i> each moderator level (avoid the mirrored table). ⚠ Ignore the Intercept and uncorrected Total rows.</p></div>
+<tr><td>Partial η²<br>${G}</td><td><b>SS<sub>treatment</sub> / (SS<sub>treatment</sub> + SS<sub>R</sub>)</b>; treatment = specific factor</td></tr>
+<tr><td>Size labels<br>${LRN}</td><td>.01 small · .06 medium · .14 large</td></tr>
+<tr><td>R² (model)<br>${PRT}</td><td>R² = SS<sub>M</sub>/SS<sub>T</sub>, using <b>SS<sub>Corrected Model</sub> / SS<sub>Corrected Total</sub></b></td></tr>
+<tr><td>F per effect<br>${PRT}</td><td><b>MS<sub>effect</sub> / MS<sub>error</sub></b> (same logic as the one-way F)</td></tr>
+<tr><td>df model / error<br>${PRT}</td><td>Same as one-way, but <b>k = number of cells</b> (a·b): Model = cells − 1; <b>Error = N − cells</b>; Corrected total = N − 1</td></tr>
+<tr><td>df per PV<br>${LRN}</td><td>A: a − 1 · B: b − 1</td></tr>
+<tr><td>df interaction<br>${LRN}</td><td><b>(a − 1)(b − 1)</b> (Field rule; check in the output)</td></tr>
+<tr><td>Design<br>${LRN}</td><td>(a×b) → <b>a·b cells</b></td></tr>
+<tr><td>SS<sub>M</sub><br>${LRN}</td><td><b>SS<sub>A</sub> + SS<sub>B</sub> + SS<sub>A×B</sub></b> (balanced design)</td></tr>
+<tr><td>Interaction H₀<br>${LRN}</td><td>effect of A is the same at every level of B</td></tr></table>
+<p class="tn">⚠ Strongest effect = largest partial η² (not the smallest p). ⚠ Partial η²'s don't add up to R². ⚠ With an interaction, main effects can mislead. ⚠ Simple effects: compare the core PV <i>within</i> each moderator level (avoid the mirrored table). ⚠ Ignore the Intercept and uncorrected Total rows.</p>
+<p class="tn" style="background:#eef6ff;border-color:#2563eb">The rest of the official sheet (regression F and t, adjusted R², tolerance, VIF, regression, mediation and logistic equations, odds ratio) is for the <b>end-of-term exam</b>, not the midterm.</p></div>
 </div>`;
 
 // ===================== PRACTICE BANK (AI-written in exam style; every answer traceable to lectures/labs) =====================
@@ -3843,6 +3851,42 @@ q:[
 {n:'Q2',pts:6,type:'open',case:['Y','G'],p:'<p>Please interpret the interaction pattern from the graph above in words: HOW do the PVs interact with each other? (In other words: how is the effect of one PV influenced by the level of the other?)</p>',model:'<ul><li>We see a main effect of ad length, in the sense that intentions to avoid the ad (the OV) are generally larger when ads are long than when they are short: both lines slope downward. However, there is a clear difference in the rate at which the lines slope downward: the dashed line has a steeper slope than the solid line. This indicates interaction between the 2 PVs.</li><li>Specifically, we see that the difference in Intention to Avoid Ad between long and short ads is much larger when ads are placed in the middle (steeper dashed line) than when they are placed at the beginning (shallower solid line). Thus, indeed we see that the effect of one PV (ad length, i.e. the difference in the OV between long and short ads) is influenced by the level of the other PV (location of the ad: at the beginning vs. in the middle).</li></ul>Intuitively, that seems to make sense: having to sit through a long ad is obviously much more annoying when you are right in the middle of watching a video. Explanations by students may be more concise than the one printed here, but the essence in terms of the effect of one variable being influenced by the level of the other (and HOW) needs to be discussed explicitly in the answer.',expl:'Step 1: both lines slope down → long ads are avoided more at both locations (main effect of length). Step 2: compare the gaps: middle about 5.6 vs 4.5 (≈ 1.1), beginning about 4.4 vs 4.1 (≈ 0.3). Step 3: same direction, different size → the effect of length depends on location (interaction in magnitude, not a cross-over).',src:'o'}
 ]};
 
+// ===== Official answer model for the 2026-27 practice exam (released 19 Nov) — overrides my earlier unofficial answers =====
+(function(){
+  const E = EX_PRACTICE; E.keyNote = '<b>Official answer model</b> (released 19 Nov), with the grading points per question. My earlier step-by-step explanations are kept below each answer.';
+  const K = {
+A1:`Correct: B (1 is false, 2 is true). <i>(4 points, no partial scoring)</i><br>Feedback: PCA does not distinguish predictors from outcomes; it summarises a set of correlated items in a smaller number of components (1 is false). Components are extracted one after another, each capturing as much of the remaining variance as possible, so the first one explains the most (2 is true).`,
+A2:`Correct answer: 180. <i>(2 points)</i><br>Feedback: at least 10 observations per item: 10 x 18 = 180. With 480 respondents this check is passed comfortably.`,
+A3:`Model answer: A KMO of 0.875 is far above the 0.5 minimum (and close to 1), so the items share a lot of common variance and the data are well suited for PCA.<br><b>Grading (2):</b> 1 point: above 0.5 / adequate; 1 point: data are suitable for PCA.`,
+A4:`Model answer: Bartlett's test is significant (p &lt; .001), so we reject the null hypothesis that the correlation matrix is an identity matrix: the items correlate sufficiently and the data are suitable for PCA.<br><b>Grading (2):</b> 1 point: significant / p &lt; .001 / H0 (identity matrix, no correlations) rejected; 1 point: items correlate, so the data are suitable for PCA.`,
+A5:`Correct: C. <i>(6 points, no partial scoring)</i><br>Feedback: each standardised item has a variance of 1, so the 18 items together have a total variance of 18. The eigenvalue of a component is the amount of variance it captures. A component with an eigenvalue of 1 or higher captures at least as much as one original item, so it summarises something; a component below 1 captures less than a single item and is not worth keeping. In this data set, components 1 to 3 (4.769, 2.954, 2.449) pass, and component 4 (0.796) does not.<br>A describes the scree plot criterion. B and D give wrong reasons: the cut-off has nothing to do with significance or with a perfect correlation.`,
+A6:`Model answer: The 3-component solution has three clearly defined components, with 5-6 items per component that each load above .60 on one component. In the 4-component solution, the first three components stay the same, while no item loads mainly on the fourth component, so this component has no meaning of its own. Therefore, the simpler and more interpretable 3-component solution is preferred (which is also what the Kaiser criterion suggests: the fourth eigenvalue is 0.796 &lt; 1). The site layout question loads on two components in both solutions; that is a reason to delete that item anyway, and it does not help us to decide here.<br><b>Grading (10):</b> 4 points: the 3-component solution has clean, clearly defined components (high loadings on one component) · 4 points: in the 4-component solution, no item loads mainly on component 4 / the fourth component cannot be interpreted · 2 points: conclusion in favour of the simpler, interpretable solution (parsimony; consistent with Kaiser).`,
+A7:`Model answer: "Facilities and on-site service" (practical comfort): the high-loading items are about the payment system, places to rest and charge, toilets, water points, and food and drinks, plus the (reversed) queue item.<br><b>Grading (4):</b> 2 points: a name that captures the common theme (facilities, service, practical comfort; other sensible labels are fine) · 2 points: justification referring to at least two items with high loadings.`,
+A8:`Correct: D. <i>(3 points)</i><br>Feedback: a summated scale averages all remaining items of a component and keeps the original scale. Option C describes a factor score. Q17 has to be deleted, and a summated scale does not use only the highest-loading items.`,
+B1:`<i>(5 points, 1 per blank)</i><br>(a) SS within = 404.272 - 35.416 = 368.856<br>(b) df within = 180 - 3 = 177<br>(c) MS between = 35.416 / 2 = 17.708<br>(d) MS within = 368.856 / 177 = 2.084<br>(e) F = 17.708 / 2.084 = 8.50 (SPSS: 8.497; small rounding differences are fine)`,
+B2:`Correct: B. <i>(4 points, no partial scoring)</i><br>Feedback: the F-test in a one-way ANOVA tests H0: mu(Day) = mu(Weekend) = mu(Camping). Option C is the alternative hypothesis; option A is the null hypothesis of Levene's test; option D is stronger than the alternative hypothesis (it requires all means to differ). Here F(2, 177) = 8.50 and p &lt; .001, so H0 is rejected.`,
+B3:`R-squared = 0.0876 means that 8.76% of ... (2 points for the conversion to a percentage: 0.0876 x 100 = 8.76%, accept 8.8%)<br>... the variance in festival experience (the outcome variable: how positively visitors evaluate their festival visit) ... (3 points)<br>... is explained by ticket type (Day, Weekend or Camping ticket) (3 points).<br>Not required: the remaining 91.24% of the variance in festival experience is not explained by ticket type (other factors, individual differences).<br><b>Grading note:</b> a purely general interpretation ("proportion of variance explained by the model") without reference to festival experience and ticket type earns at most 4 points.`,
+B4:`Correct: C. <i>(5 points, no partial scoring)</i><br>Feedback: weights of a contrast must sum to zero, the group(s) expected to score higher get positive weights, and the two contrasts should be independent (the products of the weights sum to zero).<br>A: right sums but the wrong direction for both hypotheses. B: contrast 1 does not sum to zero (-1 + 1 + 1 = 1). D: contrast 2 compares Camping with Day instead of with Weekend, and the contrasts are not independent (2 + 0 + 1 = 3, not 0).`,
+B5:`Model answer: Levene's test is not significant (p = .976), so the null hypothesis of equal variances is not rejected and the assumption holds; we therefore use the "Assume equal variances" rows.<br><b>Grading (3):</b> 1 point: Levene's test with p-value / not significant; 1 point: assumption satisfied (H0 equal variances not rejected); 1 point: use the equal-variances row.`,
+B6:`We use the "Assume equal variances" row for contrast 2 (equal variances hold, see B5). (1 point)<br>The contrast value is -0.733, t(177) = -2.78, two-tailed p = 0.006: significant. (2 points: 1 for value, 1 for t/p)<br>H2 is directional (Camping higher than Weekend), so a positive contrast value was expected. The value is negative: the Camping mean (6.12) is lower than the Weekend mean (6.85), see descriptives and means plot. (2 points)<br>The result is significant, but in the opposite direction to H2. Halving the p-value to 0.003 does not help: for the hypothesised direction the one-tailed p-value is 1 - 0.003 = 0.997. H2 is not supported (the data suggest the reverse). (2 points: 1 conclusion, 1 reasoning)<br>Feedback: a significant p-value alone does not confirm a directional hypothesis; always check the sign of the contrast value against the hypothesis.`,
+C1:`Correct: C. <i>(4 points, no partial scoring)</i><br>Feedback: ticket type is the predictor of interest and weather changes the strength/direction of its effect on festival experience: weather is a moderator and points at the arrow between ticket type and festival experience. A shows mediation (weather as intermediate step), B shows two separate main effects without interaction, D shows a correlation between the two predictors.`,
+C2:`Correct: A. <i>(5 points, no partial scoring)</i><br>Feedback: the expectation is that Camping is best in sunshine but worst in rain, with Day and Weekend roughly similar: the lines cross. B has parallel lines (two main effects, no interaction); C is an interaction too, but Camping stays the best ticket in the rain; D is the reverse pattern (Camping worst in sunshine and best in rain).`,
+C3:`H0: the mean festival experience is the same in sunny and in rainy weather (averaged over the three ticket types). (1 point + 1 point for the main effect: averaged over ticket types)<br>The p-value is &lt; .001 (SPSS: .000; F(1, 234) = 181.73). (2 points)<br>This is below .05, so we reject H0. (1 point)<br>(not required: We can conclude that the festival experience differs between sunny and rainy weather: it is higher in sunny weather (mean 7.13) than in rainy weather (mean 5.05))<br>Note (not required!): because the interaction is significant too, this main effect should be interpreted with care.`,
+C4:`Model answer: The interaction effect of ticket × weather is a large effect (because it is larger than 0.14, according to the rules of thumb). It is not the largest effect in the model; that is the main effect of weather.<br><b>Grading (5):</b> 2 points: "large effect" · 2 points: assessment of the effect size (large effect; according to the rules of thumb, .14 or higher is large) · 1 point: not the largest effect, which is the main effect of weather.`,
+C5:`<b>Part 1 (6 points; 3 points per weather condition):</b><br>Sunny weekend: visitors with a Camping ticket report a higher festival experience than visitors with a Day ticket (difference 1.87, p &lt; .001) and than visitors with a Weekend ticket (difference 1.26, p &lt; .001); the Weekend ticket also scores slightly higher than the Day ticket (difference 0.61, p = .024). (3 points)<br>Rainy weekend: visitors with a Camping ticket report a lower festival experience than visitors with a Day ticket (difference 1.57, p &lt; .001) and than visitors with a Weekend ticket (difference 1.52, p &lt; .001); Day and Weekend do not differ (difference 0.05, p = .849). (3 points)<br><b>Part 2 (6 points):</b><br>The effect of ticket type depends on the weather. The Camping ticket is the best ticket in sunny weather (mean 8.17, versus 6.30 for Day and 6.91 for Weekend), but the worst ticket in rainy weather (mean 4.02, versus 5.59 and 5.54). The difference between Day and Weekend also depends on the weather: this difference exists only in sunny weather (Weekend higher) and not in rainy weather. The lines in the plot are therefore not parallel, which is the interaction effect: weather moderates the effect of ticket type on festival experience.<br>(2 points for the reversal of the Camping effect between sunny and rainy weather; 2 points for the difference between Day and Weekend only in sunny weather; 2 points for the link to non-parallel lines and moderation)<br><b>Part 3 (4 points):</b><br>Relation to the expectation: Camping best in sunny weather and lowest in rainy weather is in line with what was expected. (2 points for the numbers, 2 points for the conclusion that the expectation is supported)<br>Note (not required): the main effect of ticket type is not significant (p = .341), because the opposite effects of the Camping ticket in sunny and rainy weather cancel each other out across the weather conditions. The differences between sunny and rainy weather within each ticket type are not needed here, because weather is the moderator.`
+  };
+  E.q.forEach(q=>{
+    const k = K[q.n]; if(!k) return; q.src = 'o';
+    if(q.type==='open'){ q.model = k; }
+    else { q.expl = '<div class="key">'+k+'</div>' + (q.expl ? '<h4>Step-by-step (mine)</h4>'+q.expl : ''); }
+  });
+  const c2 = E.q.find(q=>q.n==='C2'); c2.o[2][2] = 'C is an interaction too (the lines are not parallel), but Camping stays the best ticket in the rain, which contradicts the mud expectation.';
+  const c4 = E.q.find(q=>q.n==='C4'); c4.expl = 'Step 1: compare .284 with the rules of thumb (.01 / .06 / .14) → large. Step 2: compare it with the other partial η² values in the table: the main effect of weather is larger, so the interaction is <b>not</b> the largest effect. (Optional: the formula 133.056/(133.056 + 334.811) = .284 shows what it is a proportion of.)';
+  const c5 = E.q.find(q=>q.n==='C5'); c5.title = 'Following up: ticket type within weather'; c5.note = 'The answer model uses the heading "ticket type within weather"; the question document said "weather within ticket type" (typo in the question file).';
+  c5.expl = 'Rubric structure: Part 1: the simple effects per weather condition (differences + p). Part 2: the pattern: Camping reverses, <b>Day vs Weekend only differs in the sun</b>, non-parallel lines = moderation. Part 3: link to the expectation. Do not discuss sunny vs rainy within each ticket (weather is the moderator).';
+  const b1 = E.q.find(q=>q.n==='B1'); b1.bl[4].tol = 0.04;
+})();
+
 // ===================== AI-WRITTEN REALISTIC EXAMS (numbers come from simulated data → internally consistent) =====================
 const R1_ITEMS = SIM.r1p_comm.body.map(r=>r[0]);
 const R1_CASE_A = `<p><b>StreamWave</b> is a fictional music-streaming app. To find out which aspects drive the user experience, 420 users rated 16 statements on a 7-point scale (1 = strongly disagree, 7 = strongly agree). To explore the structure, you use Principal Component Analysis (PCA).</p><table class="t sm"><tr><th>Item</th><th>Statement</th></tr>${R1_ITEMS.map(s=>{const i=s.indexOf('. ');return `<tr><td>${s.slice(0,i)}</td><td>${s.slice(i+2)}</td></tr>`}).join('')}</table>`;
@@ -4195,7 +4239,7 @@ VIEWS.hub = () => {
    <p><span class="ne">Not examined</span> Regression, mediation analysis, logistic regression (end-of-term exam); Cronbach's α; Kruskal-Wallis details; Lecture 3B (held after the midterm).</p><p class="small mut">Practised in the PC labs: Lab 1 (PCA), Lab 2 (one-way ANOVA + contrasts), Lab 3 (factorial ANOVA), plus the three open-book assignments.</p></div>
   </div>
   <div class="card warn"><b>⚠ Missing / uncertain material</b><ul style="margin:6px 0 0">
-   <li>No official answer key for the <b>2026-27 practice exam</b>, <b>PC Lab 2 open</b> (the "Answer Key" file only has the questions), <b>PC Lab 3 open</b> and <b>PC Lab 3</b>: those answers are computed from the data and labelled. Compare them with the class discussion and the prep session (Wed 18 Nov, 13:00–15:00).</li>
+   <li>✅ The <b>2026-27 practice exam</b> now has its <b>official answer model</b> (19 Nov). No official key for <b>PC Lab 2 open</b> (the "Answer Key" file only has the questions), <b>PC Lab 3 open</b> and <b>PC Lab 3</b>: those answers are computed from the data and labelled. Compare them with the class discussion and the prep session (Wed 18 Nov, 13:00–15:00).</li>
    <li><b>StudentWiki mock exams 2023, 2024, 2025</b> are not uploaded: still the most valuable extra practice.</li>
    <li>The points→grade conversion is assumed (points ÷ 10).</li></ul></div>
   <div class="card"><h3 style="margin-top:0">Study plan to the exam</h3><table class="t plan">
